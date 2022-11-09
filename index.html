@@ -17,13 +17,80 @@
 
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/museum.css" />
 
     <meta name="theme-color" content="#fafafa" />
   </head>
 
   <body>
     <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
+    <nav>
+      <section><a href="">COSI-164 Museum</a></section>
+      <section>
+        <ul>
+          <a href="#about">About</a>
+          <a href="#submit">Submit Model</a>
+          <a href="#hero">Launch Museum</a>
+        </ul>
+      </section>
+    </nav>
+    <main>
+      <section id="hero"></section>
+
+      <section id="submit">
+        <div>
+          <form action="/action_page.php">
+            <label for="fname">First Name</label>
+            <input
+              type="text"
+              id="fname"
+              name="firstname"
+              placeholder="Your name.."
+            />
+
+            <label for="lname">Last Name</label>
+            <input
+              type="text"
+              id="lname"
+              name="lastname"
+              placeholder="Your last name.."
+            />
+
+            <label for="Mname">Model Name</label>
+            <input
+              type="text"
+              id="Mname"
+              name="modelname"
+              placeholder="Model Title"
+            />
+
+            <label for="ObjUrl">.obj Google Drive URL</label>
+            <input
+              type="text"
+              id="ObjUrl"
+              name="ObjUrl"
+              placeholder="Model (.obj) Google Drive URL"
+            />
+
+            <label for="MatUrl">.mtl Google Drive URL</label>
+            <input
+              type="text"
+              id="MtlUrl"
+              name="MatUrl"
+              placeholder="Material (.mtl) Google Drive URL"
+            />
+
+            <label for="description">Description</label>
+            <textarea>Some text...</textarea>
+
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </section>
+
+      <section id="about"></section>
+    </main>
+    <!-- Scripts -->
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
