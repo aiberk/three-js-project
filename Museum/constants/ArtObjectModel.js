@@ -8,4 +8,6 @@ const ArtObject = {
   description: String,
   large_display: Boolean,
   small_display: Boolean,
+  license: String,
+  screenshot: String,
 };
