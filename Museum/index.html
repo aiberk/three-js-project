@@ -6,15 +6,32 @@
     <!--  
         This shows how to import an obj file into your model 
       -->
+    <!------ROSSEATA-->
+    <!-- https://drive.google.com/file/d/1gmRenK0pY6Cy2zodtsU6ZntzmLQ4e9i2/view?usp=sharing -->
+
+    <!------ROSSEATA-->
+    <!------OBJ-->
+    <!-- https://drive.google.com/file/d/1gmRenK0pY6Cy2zodtsU6ZntzmLQ4e9i2/view?usp=sharing -->
+    <!-- MTL -->
+    <!-- https://drive.google.com/file/d/1ovgOa_EldS62WEUMb1G8ieWz0tpo2SwJ/view?usp=sharing -->
+    <!-- TEXTRUE -->
+    <!-- https://drive.google.com/file/d/1-pBKHc5aTSNeF8ZUIFlwBK7IHrxQSpRg/view?usp=sharing -->
+
+    <!-- https://drive.google.com/uc?export=view&id=13g8OJmkTStwJ-oU-0VB-0yvL2BebVE1Z -->
+    <!-- https://drive.google.com/uc?export=view&id=1gmRenK0pY6Cy2zodtsU6ZntzmLQ4e9i2
+
+    https://drive.google.com/uc?export=view&id=1ovgOa_EldS62WEUMb1G8ieWz0tpo2SwJ -->
+
+    <!-- https://drive.google.com/uc?export=view&id=1-pBKHc5aTSNeF8ZUIFlwBK7IHrxQSpRg  -->
     <a-scene>
       <a-assets>
         <a-asset-item
           id="suzy-obj"
-          src="https://cdn.glitch.com/9baeb756-4dfe-40ae-a61f-52b72510282b%2Fsuzaane.obj?v=1602963567447"
+          src="http://www.abyiber.com/test/lego1.obj"
         ></a-asset-item>
         <a-asset-item
           id="suzy-mtl"
-          src="https://cdn.glitch.com/9baeb756-4dfe-40ae-a61f-52b72510282b%2Fsuzaane.mtl?v=1602963567402"
+          src="http://www.abyiber.com/test/lego2.mtl"
         ></a-asset-item>
       </a-assets>
 
@@ -22,7 +39,10 @@
 
       <a-entity
         obj-model="obj: #suzy-obj; mtl: #suzy-mtl"
-        position="0 1 -4"
+        position="0 0 -4.886"
+        scale="0.01 0.01 0.01"
+        rotation="0 90 0"
+        src="http://www.abyiber.com/test/lego.png"
       ></a-entity>
 
       <a-plane
@@ -35,7 +55,5 @@
       <a-sky color="#FFCCAA"></a-sky>
     </a-scene>
   </body>
-  <script>
-    alert("Hello! I am an alert box!!");
-  </script>
+  <script></script>
 </html>

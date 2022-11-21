@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/museum.css" />
     <title>Document</title>
     <style>
       body {
@@ -53,6 +54,108 @@
       <h3 id="findAge" type="number"></h3>
       <br /><br />
     </div>
+
+    <section id="submit">
+      <div>
+        <form action="/action_page.php">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="firstname"
+            placeholder="Your name.."
+          />
+
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lastname"
+            placeholder="Your last name.."
+          />
+
+          <label for="Mname">Model Name</label>
+          <input
+            type="text"
+            id="Mname"
+            name="modelname"
+            placeholder="Model Title"
+          />
+
+          <label for="ObjUrl">.obj Google Drive URL</label>
+          <input
+            type="text"
+            id="ObjUrl"
+            name="ObjUrl"
+            placeholder="Model (.obj) Google Drive URL"
+          />
+
+          <label for="MatUrl">.mtl Google Drive URL</label>
+          <input
+            type="text"
+            id="MtlUrl"
+            name="MatUrl"
+            placeholder="Material (.mtl) Google Drive URL"
+          />
+
+          <label for="description">Description:</label>
+          <textarea>Project Description...</textarea>
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </section>
+
+    <section id="submit">
+      <div>
+        <form action="/action_page.php">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="firstname"
+            placeholder="Your name.."
+          />
+
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lastname"
+            placeholder="Your last name.."
+          />
+
+          <label for="Mname">Model Name</label>
+          <input
+            type="text"
+            id="Mname"
+            name="modelname"
+            placeholder="Model Title"
+          />
+
+          <label for="ObjUrl">.obj Google Drive URL</label>
+          <input
+            type="text"
+            id="ObjUrl"
+            name="ObjUrl"
+            placeholder="Model (.obj) Google Drive URL"
+          />
+
+          <label for="MatUrl">.mtl Google Drive URL</label>
+          <input
+            type="text"
+            id="MtlUrl"
+            name="MatUrl"
+            placeholder="Material (.mtl) Google Drive URL"
+          />
+
+          <label for="description">Description:</label>
+          <textarea>Project Description...</textarea>
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </section>
 
     <script type="module">
       //THIS IS WHERE YOU PASTE THE CODE TO CONNECT TO YOUR OWN DATABASE
@@ -107,6 +210,21 @@
       var updateBtn = document.querySelector("#update");
       var removeBtn = document.querySelector("#remove");
       var findBtn = document.querySelector("#find");
+
+      //   Change to Model after finding how to use gltf in Aframe
+      function InsertModel() {
+        set(ref(db, "Model/" + enterID.value), {
+          Name: enterName.value,
+          ID: enterID.value,
+          ModelURL: enterAge.value,
+        })
+          .then(() => {
+            alert("Data added successfully");
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
 
       function InsertData() {
         set(ref(db, "People/" + enterID.value), {
