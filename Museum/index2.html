@@ -112,16 +112,19 @@
       init: function () {
         var data = this.data;
         var el = this.el;
+        this.bar = "baz";
 
         el.addEventListener("click", function () {
           el.setAttribute("number", Math.floor(Math.random() * 3));
         });
 
         el.addEventListener("mouseenter", function () {
-          console.log(data.number);
+          console.log(data.bar);
         });
       },
-      update: function () {},
+      update: function (oldData) {
+        this.el = this.data;
+      },
       tick: function () {},
       remove: function () {},
       pause: function () {},
