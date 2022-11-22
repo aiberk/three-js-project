@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
+  </head>
+  <body>
+    <!--  
+        This shows how to import an obj file into your model 
+      -->
+    <!------ROSSEATA-->
+    <!-- https://drive.google.com/file/d/1gmRenK0pY6Cy2zodtsU6ZntzmLQ4e9i2/view?usp=sharing -->
+
+    <!------ROSSEATA-->
+    <!------OBJ-->
+    <!-- https://drive.google.com/file/d/1gmRenK0pY6Cy2zodtsU6ZntzmLQ4e9i2/view?usp=sharing -->
+    <!-- MTL -->
+    <!-- https://drive.google.com/file/d/1ovgOa_EldS62WEUMb1G8ieWz0tpo2SwJ/view?usp=sharing -->
+    <!-- TEXTRUE -->
+    <!-- https://drive.google.com/file/d/1-pBKHc5aTSNeF8ZUIFlwBK7IHrxQSpRg/view?usp=sharing -->
+
+    <!-- https://drive.google.com/uc?export=view&id=13g8OJmkTStwJ-oU-0VB-0yvL2BebVE1Z -->
+    <!-- https://drive.google.com/uc?export=view&id=1gmRenK0pY6Cy2zodtsU6ZntzmLQ4e9i2
+
+    https://drive.google.com/uc?export=view&id=1ovgOa_EldS62WEUMb1G8ieWz0tpo2SwJ -->
+
+    <!-- https://drive.google.com/uc?export=view&id=1-pBKHc5aTSNeF8ZUIFlwBK7IHrxQSpRg  -->
+    <a-scene loading-screen="dotsColor: red; backgroundColor: black">
+      <a-assets>
+        <a-asset-item id="suzy-obj" src="assets/fiveHundred.obj"></a-asset-item>
+        <a-asset-item id="suzy-mtl" src="assets/fiveHundred.mtl"></a-asset-item>
+      </a-assets>
+
+      <a-entity camera look-controls mouse-cursor></a-entity>
+
+      <!-- <a-entity
+        id="test"
+        obj-model="obj: #suzy-obj"
+        material="src: url(http://www.abyiber.com/test/lego.png);"
+        position="-1.662 0.932 -3.384"
+        scale="0.15 0.15 0.15"
+        rotation="0 180 0"
+        change-color-on-hover="color: blue"
+      ></a-entity> -->
+      <a-box
+        foo
+        color="#EF2D5E"
+        position="0 0 -4"
+        change-color-on-hover="color: blue"
+      ></a-box>
+
+      <a-box
+        foo
+        color="#EF2D5E"
+        position="2 0 -4"
+        change-color-on-hover="color: green"
+      ></a-box>
+
+      <a-box
+        foo
+        color="blue"
+        position="-2 0 -4"
+        change-color-on-hover="color: purple"
+      ></a-box>
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="#00FF00"
+      ></a-plane>
+      <a-sky color="#FFCCAA"></a-sky>
+    </a-scene>
+  </body>
+  <script>
+    AFRAME.registerComponent("change-color-on-hover", {
+      schema: {
+        color: { default: "red" },
+      },
+
+      init: function () {
+        var data = this.data;
+        var el = this.el; // <a-box>
+        var defaultColor = el.getAttribute("material").color;
+
+        el.addEventListener("mouseenter", function () {
+          el.setAttribute("color", data.color);
+        });
+
+        el.addEventListener("mouseleave", function () {
+          el.setAttribute("color", defaultColor);
+        });
+
+        el.addEventListener("click", function () {
+          start_game();
+        });
+        //  init End
+
+        let start_game = () => {
+          let box_with_treasure = getRandomInt(3);
+          let array = [getRandomInt(3), getRandomInt(3), getRandomInt(3)];
+          console.log(array);
+
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+        };
+      },
+    });
+
+    AFRAME.registerComponent("foo", {
+      schema: { number: { default: 0 } },
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+
+        el.addEventListener("click", function () {
+          el.setAttribute("number", Math.floor(Math.random() * 3));
+        });
+
+        el.addEventListener("mouseenter", function () {
+          console.log(data.number);
+        });
+      },
+      update: function () {},
+      tick: function () {},
+      remove: function () {},
+      pause: function () {},
+      play: function () {},
+    });
+  </script>
+</html>
