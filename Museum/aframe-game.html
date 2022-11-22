@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene loading-screen="dotsColor: red; backgroundColor: black">
+      <!-- <a-assets>
+        <a-asset-item id="suzy-obj" src="assets/fiveHundred.obj"></a-asset-item>
+        <a-asset-item id="suzy-mtl" src="assets/fiveHundred.mtl"></a-asset-item>
+      </a-assets> -->
+
+      <a-entity
+        id="camera"
+        camera="userHeight: 1.6"
+        look-controls
+        cursor="rayOrigin: mouse"
+      ></a-entity>
+
+      <a-entity
+        text="alphaTest:1.17;color:#1f301c;height:20.52;letterSpacing:0.84;lineHeight:0.38;tabSize:4.08;transparent:false;value:Chest Game"
+        scale="4 4 4"
+        position="1.43411 0.79425 -2.28887"
+        rotation=""
+      ></a-entity>
+
+      <a-box
+        foo
+        color="#EF2D5E"
+        position="0 0 -4"
+        bar="bar"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #EF2D5E"
+      ></a-box>
+
+      <a-box
+        foo
+        color="#EF2D5E"
+        position="2 0 -4"
+        bar="bar"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #EF2D5E"
+      ></a-box>
+
+      <a-box foo color="blue" position="-2 0 -4" bar="bar"></a-box>
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="#00FF00"
+      ></a-plane>
+      <a-sky color="#FFCCAA"></a-sky>
+    </a-scene>
+  </body>
+  <script>
+    AFRAME.registerComponent("foo", {
+      schema: { number: { default: 0 } },
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+        this.bar = "baz";
+
+        el.addEventListener("click", function () {
+          el.setAttribute("number", Math.floor(Math.random() * 3));
+        });
+
+        el.addEventListener("mouseenter", function () {
+          console.log(data.bar);
+        });
+      },
+      update: function (oldData) {
+        this.el = this.data;
+      },
+      tick: function () {},
+      remove: function () {},
+      pause: function () {},
+      play: function () {},
+    });
+  </script>
+</html>
