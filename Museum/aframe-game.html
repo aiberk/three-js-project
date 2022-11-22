@@ -2,13 +2,18 @@
   <head>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script>
+      color = "#EF2D5E";
+    </script>
   </head>
   <body>
-    <a-scene loading-screen="dotsColor: red; backgroundColor: black">
-      <!-- <a-assets>
-        <a-asset-item id="suzy-obj" src="assets/fiveHundred.obj"></a-asset-item>
-        <a-asset-item id="suzy-mtl" src="assets/fiveHundred.mtl"></a-asset-item>
-      </a-assets> -->
+    <a-scene id="container">
+      <a-entity
+        id="camera"
+        camera="userHeight: 1.6"
+        look-controls
+        cursor="rayOrigin: mouse"
+      ></a-entity>
 
       <a-entity
         id="camera"
@@ -22,9 +27,11 @@
         scale="4 4 4"
         position="1.43411 0.79425 -2.28887"
         rotation=""
+        id="main-text"
       ></a-entity>
 
       <a-box
+        id="1"
         foo
         color="#EF2D5E"
         position="0 0 -4"
@@ -42,40 +49,55 @@
         event-set__leave="_event: mouseleave; color: #EF2D5E"
       ></a-box>
 
-      <a-box foo color="blue" position="-2 0 -4" bar="bar"></a-box>
-      <a-plane
-        position="0 0 -4"
-        rotation="-90 0 0"
-        width="4"
-        height="4"
-        color="#00FF00"
-      ></a-plane>
+      <a-box
+        foo
+        color="blue"
+        position="-2 0 -4"
+        bar="bar"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #EF2D5E"
+      ></a-box>
+
       <a-sky color="#FFCCAA"></a-sky>
     </a-scene>
   </body>
   <script>
-    AFRAME.registerComponent("foo", {
-      schema: { number: { default: 0 } },
-      init: function () {
-        var data = this.data;
-        var el = this.el;
-        this.bar = "baz";
-
-        el.addEventListener("click", function () {
-          el.setAttribute("number", Math.floor(Math.random() * 3));
-        });
-
-        el.addEventListener("mouseenter", function () {
-          console.log(data.bar);
-        });
-      },
-      update: function (oldData) {
-        this.el = this.data;
-      },
-      tick: function () {},
-      remove: function () {},
-      pause: function () {},
-      play: function () {},
-    });
+    document.createDocumentFragment();
+    let container = document.getElementById("container");
+    for (let i = 0; i <= 2; i++) {
+      console.log(i);
+      let element = document.createElement("a-box");
+      element.setAttribute("color", "blue");
+      container.appendChild(element);
+      element.setAttribute("position", "0,1.6,0");
+    }
   </script>
 </html>
+
+<!-- 
+
+<script>
+  AFRAME.registerComponent("foo", {
+    schema: { number: { default: 0 } },
+    init: function () {
+      var data = this.data;
+      var el = this.el;
+      this.bar = "baz";
+
+      el.addEventListener("click", function () {
+        el.setAttribute("number", Math.floor(Math.random() * 3));
+      });
+
+      el.addEventListener("mouseenter", function () {
+        console.log(data.bar);
+      });
+    },
+    update: function (oldData) {
+      this.el = this.data;
+    },
+    tick: function () {},
+    remove: function () {},
+    pause: function () {},
+    play: function () {},
+  });
+</script> -->
