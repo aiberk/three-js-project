@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <style>
+      div {
+        height: 300px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div:hover {
+        filter: brightness(1.25);
+        font-size: larger;
+      }
+      #container {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <div id="container"></div>
+  </body>
+  <script>
+    let play_game = () => {
+      const chosen_box = Math.floor(Math.random() * 3);
+      const d = document;
+      let counter = 0;
+      var toAdd = d.createDocumentFragment();
+      let container = document.getElementById("container");
+      //Populate DOM -Body tag with game chests
+      for (let i = 0; i <= 2; i++) {
+        console.log(i);
+        let element = document.createElement("div");
+        element.setAttribute("id", i);
+        let id = element.getAttribute("class");
+        element.setAttribute("class", "box");
+        let color =
+          "rgb(" +
+          Math.floor(Math.random() * 250) +
+          "," +
+          Math.floor(Math.random() * 250) +
+          "," +
+          Math.floor(Math.random() * 250) +
+          ")";
+        element.style.backgroundColor = color;
+        const text = document.createTextNode("chest #" + i);
+        element.appendChild(text);
+        container.appendChild(element);
+      }
+      //Add events to each
+      let numb = document.getElementById("container").childElementCount;
+      for (let j = 0; j <= 2; j++) {
+        let temp = d.getElementById(j);
+        temp.addEventListener("click", myFunction);
+      }
+
+      //Check if correct box
+      function myFunction() {
+        t_id = this.getAttribute("id");
+        if (t_id == chosen_box) {
+          alert("Woooo!!");
+          location.reload();
+        } else {
+          alert("try again");
+        }
+      }
+      console.log("chosen:" + chosen_box);
+    };
+    play_game();
+  </script>
+</html>
