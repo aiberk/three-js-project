@@ -1,6 +1,6 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
   </head>
   <body>
     <!--  
@@ -25,24 +25,17 @@
     <!-- https://drive.google.com/uc?export=view&id=1-pBKHc5aTSNeF8ZUIFlwBK7IHrxQSpRg  -->
     <a-scene>
       <a-assets>
-        <a-asset-item
-          id="suzy-obj"
-          src="http://www.abyiber.com/test/fiveHundred.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="suzy-mtl"
-          src="http://www.abyiber.com/test/fiveHundred.mtl"
-        ></a-asset-item>
+        <a-asset-item id="suzy-obj" src="assets/chest0.obj"></a-asset-item>
+        <a-asset-item id="suzy-mtl" src="assets/chest2.mtl"></a-asset-item>
       </a-assets>
 
       <a-entity camera occulus-go-controls position="0 1.6 0"></a-entity>
 
       <a-entity
-        obj-model="obj: #suzy-obj"
-        material="src: url(http://www.abyiber.com/test/lego.png);"
-        position="-1.662 0.932 -3.384"
-        scale="0.15 0.15 0.15"
-        rotation="0 180 0"
+        obj-model="obj: #suzy-obj; mtl: #suzy-mtl"
+        position="0.19423 0.932 -1.34575"
+        scale="0.01 0.01 0.01"
+        rotation="0 -10.823172750021252 0"
       ></a-entity>
 
       <a-plane

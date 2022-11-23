@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent("my-test-component", {
+        tick: function () {
+          var el = this.el;
+          el.setAttribute("value", "other text");
+        },
+      });
+    </script>
   </head>
   <body>
     <a-scene>
-      <a-assets> </a-assets>
-      <a-entity
-        text="value: Hello World; alphaTest: 1.17; height: 20.52; letterSpacing: 0.84; lineHeight: 0.38; tabSize: 4.08"
-        scale="4 4 4"
-        position="1.43411 0.79425 -2.28887"
-      ></a-entity>
+      <a-text
+        id="text"
+        value="some text"
+        position="0 2 0"
+        wrap-count="20"
+        my-test-component
+      ></a-text>
 
-      <a-entity camera occulus-go-controls position="0 1.6 0"></a-entity>
-
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder
+        position="1 0.75 -3"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+      ></a-cylinder>
       <a-plane
         position="0 0 -4"
         rotation="-90 0 0"
         width="4"
         height="4"
-        color="#00FF00"
+        color="#7BC8A4"
       ></a-plane>
-      <a-sky color="#FFCCAA"></a-sky>
+      <a-sky color="#ECECEC"></a-sky>
+      <a-camera position="0 2 3.7"></a-camera>
     </a-scene>
   </body>
-  <script></script>
 </html>
