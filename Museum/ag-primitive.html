@@ -11,7 +11,7 @@
       let click_count = 0;
 
       AFRAME.registerComponent("foo", {
-        schema: {},
+        schema: { number: { default: 0 } },
         init: function () {
           var data = this.data;
           var el = this.el;
@@ -22,11 +22,6 @@
             } else {
               console.log("Try again" + this.id);
             }
-          });
-
-          el.addEventListener("mouseenter", function () {
-            console.log(this.material + " is hovered.");
-            el.setAttirbute("material", "color", "blue");
           });
         },
         update: function (oldData) {
@@ -44,7 +39,9 @@
           var data = this.data;
           var el = this.el;
 
-          el.addEventListener("click", function () {});
+          el.addEventListener("click", function () {
+            el.setAttribute("visible", "false");
+          });
         },
         update: function (oldData) {
           this.el = this.data;
@@ -70,8 +67,26 @@
         cursor="rayOrigin: mouse"
       ></a-entity>
 
-      <a-text
+      <!-- <a-text
         message
+        value="Chest Game"
+        scale="4 4 4"
+        position="1.43411 0.79425 -2.28887"
+        rotation=""
+        id="main-text"
+      ></a-text> -->
+
+      <!-- <a-text
+        message
+        value="Chest Game"
+        scale="1 1 1"
+        position="0 1 -2"
+        rotation=""
+        id="main-text"
+      ></a-text> -->
+
+      <a-text
+        message=""
         value="Chest Game"
         scale=""
         position="-0.6 0.58877 -2"
@@ -80,40 +95,7 @@
         text=""
       ></a-text>
 
-      <a-entity
-        foo
-        id="0"
-        obj-model="obj: #suzy-obj;"
-        material="color:blue"
-        position="0.442 -0.3 -1.93"
-        scale="0.02 0.02 0.02"
-        rotation="0 2.213 0"
-        event-set__enter="_event: mouseenter; color: #026fc9"
-        event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-entity>
-
-      <a-entity
-        foo
-        id="1"
-        obj-model="obj: #suzy-obj;"
-        position="-0.45 -0.3 -1.8"
-        scale="0.02 0.02 0.02"
-        rotation="0 16.31 0"
-        event-set__enter="_event: mouseenter; color: #026fc9"
-        event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-entity>
-      <a-entity
-        foo
-        id="2"
-        obj-model="obj: #suzy-obj;"
-        position="1.377 -0.3 -1.50"
-        scale="0.02 0.02 0.02"
-        rotation="0 -22.9 0"
-        event-set__enter="_event: mouseenter; color: #026fc9"
-        event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-entity>
-
-      <!-- <a-box
+      <a-box
         foo
         id="0"
         color="#EF2D5E"
@@ -138,9 +120,10 @@
         position="-2 0 -4"
         event-set__enter="_event: mouseenter; color: #026fc9"
         event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-box> -->
+      ></a-box>
 
       <a-sky color="#FFCCAA"></a-sky>
     </a-scene>
+    <h1 style="z-index: 0 !important">Hel</h1>
   </body>
 </html>
