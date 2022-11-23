@@ -24,6 +24,8 @@
             }
           });
 
+          //Idea is to change color or lighting when hovered
+          //First change material -> then add lights
           el.addEventListener("mouseenter", function () {
             console.log(this.material + " is hovered.");
             el.setAttirbute("material", "color", "blue");
@@ -84,7 +86,7 @@
         foo
         id="0"
         obj-model="obj: #suzy-obj;"
-        material="color:blue"
+        material="color:goldenrod emissiveIntensity:10"
         position="0.442 -0.3 -1.93"
         scale="0.02 0.02 0.02"
         rotation="0 2.213 0"
@@ -112,34 +114,6 @@
         event-set__enter="_event: mouseenter; color: #026fc9"
         event-set__leave="_event: mouseleave; color: #EF2D5E"
       ></a-entity>
-
-      <!-- <a-box
-        foo
-        id="0"
-        color="#EF2D5E"
-        position="0 0 -4"
-        event-set__enter="_event: mouseenter; color: #026fc9"
-        event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-box>
-
-      <a-box
-        foo
-        id="1"
-        color="#EF2D5E"
-        position="2 0 -4"
-        event-set__enter="_event: mouseenter; color: #026fc9"
-        event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-box>
-
-      <a-box
-        foo
-        id="2"
-        color="#EF2D5E"
-        position="-2 0 -4"
-        event-set__enter="_event: mouseenter; color: #026fc9"
-        event-set__leave="_event: mouseleave; color: #EF2D5E"
-      ></a-box> -->
-
       <a-sky color="#FFCCAA"></a-sky>
     </a-scene>
   </body>
