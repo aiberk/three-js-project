@@ -3,6 +3,16 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script>
+      //  TODO
+      // - Create 3D Model
+      // - Create hover,failure,and success animations
+      // - Export to Gltf
+      // - Add to Code
+      // - Figure out Lights
+      // - Figure out Camera
+      // - Figure out Sound
+    </script>
+    <script>
       const chosen_box = Math.floor(Math.random() * 3);
       let click_count = 0;
 
@@ -25,8 +35,10 @@
             }
           });
 
-          // //Idea is to change color or lighting when hovered
-          // //First change material -> then add lights
+          // UNCOMMENT THIS IS CRITICAL CODE
+          // UNCOMMENT THIS IS CRITICAL CODE
+          // UNCOMMENT THIS IS CRITICAL CODE
+          // UNCOMMENT THIS IS CRITICAL CODE
           // el.addEventListener("mouseenter", function () {
           //   console.log(this.id + " is hovered.");
           //   var mesh = el.getObject3D("mesh");
@@ -49,6 +61,10 @@
           //     repetitions: 2,
           //   });
           // });
+          // UNCOMMENT THIS IS CRITICAL CODE
+          // UNCOMMENT THIS IS CRITICAL CODE
+          // UNCOMMENT THIS IS CRITICAL CODE
+          // UNCOMMENT THIS IS CRITICAL CODE
         },
         update: function (oldData) {
           this.el = this.data;
@@ -80,7 +96,6 @@
   <body>
     <a-scene id="container">
       <a-assets>
-        <a-asset-item id="suzy-obj" src="assets/chest0.obj"></a-asset-item>
         <a-asset-item id="suzy-gltf" src="assets/chest.glb"></a-asset-item>
       </a-assets>
 
