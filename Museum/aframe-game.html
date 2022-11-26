@@ -96,8 +96,14 @@
   <body>
     <a-scene id="container">
       <a-assets>
-        <a-asset-item id="suzy-gltf" src="assets/test-final.glb"></a-asset-item>
+        <a-asset-item
+          id="suzy-gltf"
+          src="assets/chest-test-ani.glb"
+        ></a-asset-item>
       </a-assets>
+      <a-entity light position="0 1 -0.456"></a-entity>
+      <a-entity light position="0 0 -0.456"></a-entity>
+      <a-entity light position="0 -1 -0.456"></a-entity>
 
       <a-entity
         id="camera"
@@ -141,9 +147,10 @@
         position="2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
         rotation="0 0 0"
+        animation-mixer
       ></a-entity>
 
-      <a-sky color="#FFCCAA"></a-sky>
+      <a-sky color="#000"></a-sky>
     </a-scene>
   </body>
 </html>
