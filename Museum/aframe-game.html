@@ -24,9 +24,9 @@
 
           el.addEventListener("click", function () {
             el.setAttribute("animation-mixer", {
-              clip: "pirate shipAction.007",
+              clip: "ArmatureAction.005",
               loop: "repeat",
-              repetitions: 2,
+              repetitions: 1,
             });
             if (this.id == chosen_box) {
               alert("Wooo!");
@@ -96,10 +96,9 @@
   <body>
     <a-scene id="container">
       <a-assets>
-        <a-asset-item
-          id="suzy-gltf"
-          src="assets/chest-test-ani.glb"
-        ></a-asset-item>
+        <a-asset-item id="suzy-gltf" src="assets/t3.glb"></a-asset-item>
+
+        <a-asset-tiem id="museum" src="assets/m2.png"></a-asset-tiem>
       </a-assets>
       <a-entity light position="0 1 -0.456"></a-entity>
       <a-entity light position="0 0 -0.456"></a-entity>
@@ -128,7 +127,8 @@
         gltf-model="#suzy-gltf"
         position="-2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
-        rotation="0 0 0"
+        rotation="0 180 0"
+        animation-mixer="clip: open"
       ></a-entity>
 
       <a-entity
@@ -137,7 +137,7 @@
         gltf-model="#suzy-gltf"
         position="0 -1.407 -4.151"
         scale="0.3 0.3 0.3"
-        rotation="0 0 0"
+        rotation="0 180 0"
       ></a-entity>
 
       <a-entity
@@ -146,9 +146,18 @@
         gltf-model="#suzy-gltf"
         position="2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
-        rotation="0 0 0"
-        animation-mixer
+        rotation="0 180 0"
+        animation-mixer="clip: reject"
       ></a-entity>
+
+      <!-- <a-link
+        href="index.html"
+        title="My Homepage"
+        image="#museum"
+        scale="0.2 0.2 0.2"
+        visualAspectEnabled="true"
+        geometry="primitive: plane"
+      ></a-link> -->
 
       <a-sky color="#000"></a-sky>
     </a-scene>
