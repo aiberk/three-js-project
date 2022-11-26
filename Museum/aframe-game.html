@@ -4,7 +4,7 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script>
       //  TODO
-      // - Create 3D Model
+      // - Create 3D Model - Done
       // - Create hover,failure,and success animations
       // - Export to Gltf
       // - Add to Code
@@ -15,6 +15,8 @@
     <script>
       const chosen_box = Math.floor(Math.random() * 3);
       let click_count = 0;
+      var success_sound = document.querySelector("#success");
+      console.log("success_sound=" + success_sound);
 
       AFRAME.registerComponent("foo", {
         schema: {},
@@ -23,30 +25,29 @@
           var el = this.el;
 
           el.addEventListener("click", function () {
-            el.setAttribute("animation-mixer", {
-              clip: "reject",
-              loop: "repeat",
-              repetitions: 1,
-            });
             if (this.id == chosen_box) {
-              alert("Wooo!");
+              // alert("Wooo!");
+              el.setAttribute("animation-mixer", {
+                clip: "open",
+                loop: "repeat",
+                repetitions: 1,
+              });
             } else {
               console.log("Try again" + this.id);
+              el.setAttribute("animation-mixer", {
+                clip: "reject",
+                loop: "repeat",
+                repetitions: 1,
+              });
             }
           });
 
           el.addEventListener("mouseenter", function () {
-            console.log(this.id + " is hovered.");
-            var mesh = el.getObject3D("mesh");
-            console.log(mesh);
             el.setAttribute("animation-mixer", {
-              clip: "open",
+              clip: "hover",
               loop: "repeat",
               repetitions: 1,
             });
-
-            // console.log("chil color=" + mesh.children[8].material.color.r);
-            // mesh.material.opacity = 0.9;
           });
 
           el.addEventListener("mouseleave", function () {
@@ -88,10 +89,13 @@
   <body>
     <a-scene id="container">
       <a-assets>
-        <a-asset-item id="suzy-gltf" src="assets/t3.glb"></a-asset-item>
+        <a-asset-item id="suzy-gltf" src="assets/t4.glb"></a-asset-item>
 
         <a-asset-tiem id="museum" src="assets/m2.png"></a-asset-tiem>
+
+        <audio id="success" src="assets/success.mp3" preload="auto"></audio>
       </a-assets>
+      <!-- <a-sound src="#success" autoplay="true"></a-sound> -->
       <a-entity light position="0 1 -0.456"></a-entity>
       <a-entity light position="0 0 -0.456"></a-entity>
       <a-entity light position="0 -1 -0.456"></a-entity>
@@ -138,17 +142,8 @@
         position="2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
         rotation="0 180 0"
+        sound="src: url(assets/succes.mp3); on: click;"
       ></a-entity>
-
-      <!-- <a-link
-        href="index.html"
-        title="My Homepage"
-        image="#museum"
-        scale="0.2 0.2 0.2"
-        visualAspectEnabled="true"
-        geometry="primitive: plane"
-      ></a-link> -->
-
       <a-sky color="#000"></a-sky>
     </a-scene>
   </body>
