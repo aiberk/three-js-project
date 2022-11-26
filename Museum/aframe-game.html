@@ -24,7 +24,7 @@
 
           el.addEventListener("click", function () {
             el.setAttribute("animation-mixer", {
-              clip: "ArmatureAction.005",
+              clip: "reject",
               loop: "repeat",
               repetitions: 1,
             });
@@ -35,36 +35,28 @@
             }
           });
 
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // el.addEventListener("mouseenter", function () {
-          //   console.log(this.id + " is hovered.");
-          //   var mesh = el.getObject3D("mesh");
-          //   console.log(mesh);
-          //   el.setAttribute("animation-mixer", {
-          //     clip: "pirate shipAction.010",
-          //     loop: "repeat",
-          //     repetitions: 2,
-          //   });
+          el.addEventListener("mouseenter", function () {
+            console.log(this.id + " is hovered.");
+            var mesh = el.getObject3D("mesh");
+            console.log(mesh);
+            el.setAttribute("animation-mixer", {
+              clip: "open",
+              loop: "repeat",
+              repetitions: 1,
+            });
 
-          //   // console.log("chil color=" + mesh.children[8].material.color.r);
-          //   // mesh.material.opacity = 0.9;
-          // });
+            // console.log("chil color=" + mesh.children[8].material.color.r);
+            // mesh.material.opacity = 0.9;
+          });
 
-          // el.addEventListener("mouseleave", function () {
-          //   var mesh = el.getObject3D("mesh");
-          //   el.setAttribute("animation-mixer", {
-          //     clip: "pirate shipAction.007",
-          //     loop: "repeat",
-          //     repetitions: 2,
-          //   });
-          // });
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // UNCOMMENT THIS IS CRITICAL CODE
-          // UNCOMMENT THIS IS CRITICAL CODE
+          el.addEventListener("mouseleave", function () {
+            var mesh = el.getObject3D("mesh");
+            el.setAttribute("animation-mixer", {
+              clip: "pirate shipAction.007",
+              loop: "repeat",
+              repetitions: 2,
+            });
+          });
         },
         update: function (oldData) {
           this.el = this.data;
@@ -128,7 +120,6 @@
         position="-2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
         rotation="0 180 0"
-        animation-mixer="clip: open"
       ></a-entity>
 
       <a-entity
@@ -147,7 +138,6 @@
         position="2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
         rotation="0 180 0"
-        animation-mixer="clip: reject"
       ></a-entity>
 
       <!-- <a-link
