@@ -12,7 +12,7 @@ AFRAME.registerComponent("game-chest", {
         user_success = true;
         success_sound.play();
         el.setAttribute("animation-mixer", {
-          clip: "open",
+          clip: "success",
           loop: "repeat",
           repetitions: 1,
         });
