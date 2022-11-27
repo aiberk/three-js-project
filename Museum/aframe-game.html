@@ -23,10 +23,13 @@
         init: function () {
           var data = this.data;
           var el = this.el;
+          let success_sound = document.querySelector("#success");
+          let rejected_sound = document.querySelector("#rejected");
+          let hover_sound = document.querySelector("#hover");
 
           el.addEventListener("click", function () {
             if (this.id == chosen_box) {
-              // alert("Wooo!");
+              success_sound.play();
               el.setAttribute("animation-mixer", {
                 clip: "open",
                 loop: "repeat",
@@ -34,6 +37,7 @@
               });
             } else {
               console.log("Try again" + this.id);
+              rejected_sound.play();
               el.setAttribute("animation-mixer", {
                 clip: "reject",
                 loop: "repeat",
@@ -43,6 +47,7 @@
           });
 
           el.addEventListener("mouseenter", function () {
+            hover_sound.play();
             el.setAttribute("animation-mixer", {
               clip: "hover",
               loop: "repeat",
@@ -92,8 +97,13 @@
         <a-asset-item id="suzy-gltf" src="assets/t4.glb"></a-asset-item>
 
         <a-asset-tiem id="museum" src="assets/m2.png"></a-asset-tiem>
-
+        <audio id="hover" src="assets/hover_audio.mp3" preload="auto"></audio>
         <audio id="success" src="assets/success.mp3" preload="auto"></audio>
+        <audio
+          id="rejected"
+          src="assets/rrejected_audio.mp3"
+          preload="auto"
+        ></audio>
       </a-assets>
       <!-- <a-sound src="#success" autoplay="true"></a-sound> -->
       <a-entity light position="0 1 -0.456"></a-entity>
