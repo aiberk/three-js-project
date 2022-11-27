@@ -74,9 +74,19 @@
         ></audio>
       </a-assets>
 
-      <a-entity light position="0 1 -0.456"></a-entity>
+      <!-- <a-entity light position="0 1 -0.456"></a-entity>
       <a-entity light position="0 0 -0.456"></a-entity>
-      <a-entity light position="0 -1 -0.456"></a-entity>
+      <a-entity light position="0 -1 -0.456"></a-entity> -->
+
+      <!-- <a-entity
+        light="angle: 0; decay: 1.97; intensity: 3.61"
+        position="0.0222 -0.11915 -0.456"
+      ></a-entity> -->
+
+      <a-entity
+        light="angle: 0; decay: 1.97; intensity: 2.47;  type: ambient; castShadow: true"
+        position="0.0222 -0.11915 -0.456"
+      ></a-entity>
 
       <a-entity
         id="camera"
@@ -120,7 +130,13 @@
         rotation="0 0 0"
       ></a-entity>
 
-      <a-sky color="#000"></a-sky>
+      <a-sky color="#fff"></a-sky>
+      <a-entity
+        geometry="depth: 0.4; height: 0.4"
+        material="color: #36454F"
+        position="0 -2 -4.03026"
+        scale="30.98 1 50"
+      ></a-entity>
     </a-scene>
   </body>
 </html>
