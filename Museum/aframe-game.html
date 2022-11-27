@@ -1,7 +1,12 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+    <!-- Animation Mixer -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <!-- GIF Player Extension -->
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <script>
       //  TODO
       // - Create 3D Model - Done
@@ -15,10 +20,9 @@
     <script>
       const chosen_box = Math.floor(Math.random() * 3);
       let click_count = 0;
-      var success_sound = document.querySelector("#success");
-      console.log("success_sound=" + success_sound);
+      let user_success = false;
 
-      AFRAME.registerComponent("foo", {
+      AFRAME.registerComponent("game-chest", {
         schema: {},
         init: function () {
           var data = this.data;
@@ -29,6 +33,7 @@
 
           el.addEventListener("click", function () {
             if (this.id == chosen_box) {
+              user_success = true;
               success_sound.play();
               el.setAttribute("animation-mixer", {
                 clip: "open",
@@ -36,7 +41,6 @@
                 repetitions: 1,
               });
             } else {
-              console.log("Try again" + this.id);
               rejected_sound.play();
               el.setAttribute("animation-mixer", {
                 clip: "reject",
@@ -73,13 +77,47 @@
         play: function () {},
       });
 
-      AFRAME.registerComponent("message", {
-        schema: { value: "Chest Game" },
+      AFRAME.registerComponent("image", {
+        schema: {},
         init: function () {
+          this.play();
           var data = this.data;
           var el = this.el;
+          var mesh = el.getObject3D("mesh");
 
-          el.addEventListener("click", function () {});
+          el.addEventListener("click", function () {
+            mesh.scale.x = 0;
+            mesh.scale.y = 0;
+            mesh.scale.z = 0;
+          });
+        },
+        update: function (oldData) {
+          this.el = this.data;
+        },
+        tick: function () {},
+        remove: function () {},
+        pause: function () {},
+        play: function () {},
+      });
+
+      AFRAME.registerComponent("message", {
+        schema: {},
+        init: function () {
+          this.play();
+          var data = this.data;
+          var el = this.el;
+          var mesh = el.getObject3D("mesh");
+          if (user_success) {
+            el.setAttribute("value", "Woo!");
+          } else {
+            el.setAttribute("value", "Click to start game");
+          }
+
+          el.addEventListener("click", function () {
+            // console.log("Message id:" + this.mesh);
+            // console.log(this.text);
+            el.setAttribute("value", "Pick the correct chest to win!");
+          });
         },
         update: function (oldData) {
           this.el = this.data;
@@ -95,17 +133,18 @@
     <a-scene id="container">
       <a-assets>
         <a-asset-item id="suzy-gltf" src="assets/t4.glb"></a-asset-item>
+        <video id="movie" autoplay loop="true" src="assets/shuffle.mov"></video>
 
-        <a-asset-tiem id="museum" src="assets/m2.png"></a-asset-tiem>
+        <a-asset-tiem id="museum" src="assets/test-gif.gif"></a-asset-tiem>
         <audio id="hover" src="assets/hover_audio.wav" preload="auto"></audio>
         <audio id="success" src="assets/success.mp3" preload="auto"></audio>
         <audio
           id="rejected"
-          src="assets/rrejected_audio.mp3"
+          src="assets/test_audio_rejected.wav"
           preload="auto"
         ></audio>
       </a-assets>
-      <!-- <a-sound src="#success" autoplay="true"></a-sound> -->
+
       <a-entity light position="0 1 -0.456"></a-entity>
       <a-entity light position="0 0 -0.456"></a-entity>
       <a-entity light position="0 -1 -0.456"></a-entity>
@@ -119,16 +158,29 @@
 
       <a-text
         message
-        value="Chest Game"
-        scale=""
+        value=""
+        scale="1 1 1"
         position="-0.6 0.58877 -2"
         rotation=""
         id="main-text"
-        text=""
+        geometry="primitive:plane; width:100;"
       ></a-text>
+      <!-- <a-video src="#mov" width="16" height="9" position="0 0 -20"></a-video> -->
 
+      <!-- <a-entity
+        message
+        text="value: Chest Game"
+        id="main-text"
+        position="-0.6 0.58877 -2"
+      ></a-entity> -->
+      <a-image
+        image
+        src="#museum"
+        position="0 0 -2.775"
+        scale="5 5 5"
+      ></a-image>
       <a-entity
-        foo
+        game-chest
         id="0"
         gltf-model="#suzy-gltf"
         position="-2 -1.407 -4.151"
@@ -137,7 +189,7 @@
       ></a-entity>
 
       <a-entity
-        foo
+        game-chest
         id="1"
         gltf-model="#suzy-gltf"
         position="0 -1.407 -4.151"
@@ -146,14 +198,14 @@
       ></a-entity>
 
       <a-entity
-        foo
+        game-chest
         id="2"
         gltf-model="#suzy-gltf"
         position="2 -1.407 -4.151"
         scale="0.3 0.3 0.3"
         rotation="0 180 0"
-        sound="src: url(assets/succes.mp3); on: click;"
       ></a-entity>
+
       <a-sky color="#000"></a-sky>
     </a-scene>
   </body>
