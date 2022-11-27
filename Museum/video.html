@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent("play-on-click", {
+        init: function () {
+          this.onClick = this.onClick.bind(this);
+          let el = this.el;
+        },
+        play: function () {
+          window.addEventListener("click", this.onClick);
+          setTimeout(() => {
+            this.el.object3D.visible = false;
+            this.el.object3D.scale.x = 0;
+            this.el.object3D.scale.y = 0;
+            this.el.object3D.scale.z = 0;
+
+            console.log();
+          }, "2000");
+        },
+        pause: function () {
+          window.removeEventListener("click", this.onClick);
+        },
+        onClick: function (evt) {
+          var videoEl = this.el.getAttribute("material").src;
+          if (!videoEl) {
+            return;
+          }
+          this.el.object3D.visible = true;
+          videoEl.play();
+        },
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene id="container">
+      <a-assets>
+        <a-asset-item id="suzy-gltf" src="assets/t4.glb"></a-asset-item>
+        <video
+          id="movie"
+          autoplay
+          loop="true"
+          src="assets/test-vid.mp4"
+          preload="auto"
+        ></video>
+      </a-assets>
+
+      <a-video
+        play-on-click
+        loop="true"
+        autoplay
+        src="#movie"
+        width="16"
+        height="9"
+        position="0 0 -20"
+      ></a-video>
+      <a-sky color="#fffaaa"></a-sky>
+    </a-scene>
+  </body>
+</html>

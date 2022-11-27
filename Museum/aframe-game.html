@@ -135,7 +135,10 @@
         <a-asset-item id="suzy-gltf" src="assets/t4.glb"></a-asset-item>
         <video id="movie" autoplay loop="true" src="assets/shuffle.mov"></video>
 
-        <a-asset-tiem id="museum" src="assets/test-gif.gif"></a-asset-tiem>
+        <a-asset-tiem
+          id="instructions"
+          src="assets/instructions.png"
+        ></a-asset-tiem>
         <audio id="hover" src="assets/hover_audio.wav" preload="auto"></audio>
         <audio id="success" src="assets/success.mp3" preload="auto"></audio>
         <audio
@@ -156,7 +159,7 @@
         cursor="rayOrigin: mouse"
       ></a-entity>
 
-      <a-text
+      <!-- <a-text
         message
         value=""
         scale="1 1 1"
@@ -164,8 +167,8 @@
         rotation=""
         id="main-text"
         geometry="primitive:plane; width:100;"
-      ></a-text>
-      <!-- <a-video src="#mov" width="16" height="9" position="0 0 -20"></a-video> -->
+      ></a-text> -->
+      <a-video src="#movie" width="16" height="9" position="0 0 -20"></a-video>
 
       <!-- <a-entity
         message
@@ -175,9 +178,9 @@
       ></a-entity> -->
       <a-image
         image
-        src="#museum"
+        src="#instructions"
         position="0 0 -2.775"
-        scale="5 5 5"
+        scale="5 4 4"
       ></a-image>
       <a-entity
         game-chest
