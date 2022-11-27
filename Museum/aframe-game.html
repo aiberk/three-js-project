@@ -58,9 +58,9 @@
           el.addEventListener("mouseleave", function () {
             var mesh = el.getObject3D("mesh");
             el.setAttribute("animation-mixer", {
-              clip: "pirate shipAction.007",
+              clip: "Non existing clip to reset",
               loop: "repeat",
-              repetitions: 2,
+              repetitions: 1,
             });
           });
         },
@@ -97,7 +97,7 @@
         <a-asset-item id="suzy-gltf" src="assets/t4.glb"></a-asset-item>
 
         <a-asset-tiem id="museum" src="assets/m2.png"></a-asset-tiem>
-        <audio id="hover" src="assets/hover_audio.mp3" preload="auto"></audio>
+        <audio id="hover" src="assets/hover_audio.wav" preload="auto"></audio>
         <audio id="success" src="assets/success.mp3" preload="auto"></audio>
         <audio
           id="rejected"
