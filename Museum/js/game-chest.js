@@ -16,6 +16,9 @@ AFRAME.registerComponent("game-chest", {
           loop: "repeat",
           repetitions: 1,
         });
+        setTimeout(() => {
+          location.reload();
+        }, "5000");
       } else {
         rejected_sound.play();
         el.setAttribute("animation-mixer", {
