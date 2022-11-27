@@ -18,9 +18,7 @@
             console.log();
           }, "2000");
         },
-        pause: function () {
-          window.removeEventListener("click", this.onClick);
-        },
+        pause: function () {},
         onClick: function (evt) {
           var videoEl = this.el.getAttribute("material").src;
           if (!videoEl) {

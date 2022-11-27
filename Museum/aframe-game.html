@@ -1,13 +1,19 @@
 <html>
   <head>
+    <!-- Aframe Library -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-
     <!-- Animation Mixer -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-
     <!-- GIF Player Extension -->
     <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <!-- Custom component for Game Pieces -->
     <script src="js/game-chest.js"></script>
+    <!-- Custom component for Links -->
+    <!-- Custom component for Video -->
+    <script src="js/video-control.js"></script>
+    <!-- Custom component for Text -->
+    <script src="js/message.js"></script>
+
     <script>
       //  TODO
       // - Create 3D Model - Done
@@ -16,9 +22,11 @@
       // - Add to Code
       // - Figure out Lights
       // - Figure out Camera
-      // - Figure out Sound
+      // - Figure out Sound - Done
+      // - Get proper sounds
     </script>
     <script>
+      // Picks a random number between 1-3 inclusive
       const chosen_box = Math.floor(Math.random() * 3);
       let click_count = 0;
       let user_success = false;
@@ -35,34 +43,6 @@
             mesh.scale.x = 0;
             mesh.scale.y = 0;
             mesh.scale.z = 0;
-          });
-        },
-        update: function (oldData) {
-          this.el = this.data;
-        },
-        tick: function () {},
-        remove: function () {},
-        pause: function () {},
-        play: function () {},
-      });
-
-      AFRAME.registerComponent("message", {
-        schema: {},
-        init: function () {
-          this.play();
-          var data = this.data;
-          var el = this.el;
-          var mesh = el.getObject3D("mesh");
-          if (user_success) {
-            el.setAttribute("value", "Woo!");
-          } else {
-            el.setAttribute("value", "Click to start game");
-          }
-
-          el.addEventListener("click", function () {
-            // console.log("Message id:" + this.mesh);
-            // console.log(this.text);
-            el.setAttribute("value", "Pick the correct chest to win!");
           });
         },
         update: function (oldData) {
@@ -105,29 +85,14 @@
         cursor="rayOrigin: mouse"
       ></a-entity>
 
-      <!-- <a-text
-        message
-        value=""
-        scale="1 1 1"
-        position="-0.6 0.58877 -2"
-        rotation=""
-        id="main-text"
-        geometry="primitive:plane; width:100;"
-      ></a-text> -->
       <a-video src="#movie" width="16" height="9" position="0 0 -20"></a-video>
-
-      <!-- <a-entity
-        message
-        text="value: Chest Game"
-        id="main-text"
-        position="-0.6 0.58877 -2"
-      ></a-entity> -->
       <a-image
         image
         src="#instructions"
         position="0 0 -2.775"
         scale="5 4 4"
       ></a-image>
+
       <a-entity
         game-chest
         id="0"
@@ -159,3 +124,20 @@
     </a-scene>
   </body>
 </html>
+
+<!-- <a-text
+        message
+        value=""
+        scale="1 1 1"
+        position="-0.6 0.58877 -2"
+        rotation=""
+        id="main-text"
+        geometry="primitive:plane; width:100;"
+      ></a-text> -->
+
+<!-- <a-entity
+        message
+        text="value: Chest Game"
+        id="main-text"
+        position="-0.6 0.58877 -2"
+      ></a-entity> -->
