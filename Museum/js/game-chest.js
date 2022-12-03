@@ -16,9 +16,9 @@ AFRAME.registerComponent("game-chest", {
           loop: "repeat",
           repetitions: 1,
         });
-        setTimeout(() => {
-          location.reload();
-        }, "5000");
+        // setTimeout(() => {
+        //   location.reload();
+        // }, "5000");
       } else {
         rejected_sound.play();
         el.setAttribute("animation-mixer", {
@@ -39,7 +39,7 @@ AFRAME.registerComponent("game-chest", {
     });
 
     el.addEventListener("mouseleave", function () {
-      var mesh = el.getObject3D("mesh");
+      // var mesh = el.getObject3D("mesh");
       el.setAttribute("animation-mixer", {
         clip: "Non existing clip to reset",
         loop: "repeat",
