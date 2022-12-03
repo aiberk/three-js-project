@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="follow.js"></script>
+    <script src="keycontroller.js"></script>
+   
+
+  </head>
+  <body>
+
+  <a-scene>
+
+    <a-entity
+      id="jabba1"
+      gltf-model="jabba.gltf"
+      animation-mixer="clip:nod"
+      position="-6 1 -10"
+      ></a-entity>
+
+    <a-entity
+      id="jabba2"
+      gltf-model="jabba.gltf"
+      animation-mixer="clip:grow"
+      position="10 1 -10"
+      follow="target:#avatar;speed:1;dist:100;url:practice.html"
+      ></a-entity>
+
+    <a-box id="floor"
+        width="200" height="200" depth="1"
+        rotation="-90 0 0" position="0 -0.5 0" 
+        material="src:wood.jpg; repeat:1 1"
+    ></a-box>
+
+    <a-cone
+        id="cone"
+        radius-bottom="2"
+        radius-top=".1"
+        height="5"
+        color="yellow"
+        position="-10 1 -10"
+    ></a-cone>
+
+    <a-cone
+      material="color:blue"
+      position="5 1 -10"
+            
+      ammo-body="type: dynamic;" ammo-shape="type: cone"
+      radius="2"
+      height ="2"
+></a-cone>
+
+    <a-cone
+            material="color:blue"
+            position="0 1 -10"></a-cone>
+
+    <a-cone
+            material="color:green"
+            position="3 1 -10"
+            follow="target:#avatar;url:practice.html; speed:2; dist:10"
+            radius="2"
+            height ="2"
+     ></a-cone>
+
+
+    <!-- avatar -->
+    <a-entity  id="avatar" 
+            keycontroller
+            look-controls="pointerLockEnabled:false"
+            wasd-controls>
+        <a-box 
+            material="color:blue; opacity:0.5"
+            position="0 0 0" width="3" height="1" depth="10"></a-box>
+        <a-entity 
+            camera position="0 1.6 0"
+        ></a-entity>
+    </a-entity>
+
+    <a-sky material="src:evening.jpeg"></a-sky>
+    
+  
+  </a-scene>
+  </body>
+  </html>

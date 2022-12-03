@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="follow.js"></script>
+
+  </head>
+  <body>
+
+  <a-scene>
+
+    <!-- avatar -->
+    <a-entity  id="avatar" 
+            movement-controls="fly:false" 
+            look-controls="pointerLockEnabled:false"
+            wasd-controls>
+        <a-box 
+            material="color:blue; opacity:0.5"
+            position="0 0 0" width="3" height="1" depth="10"></a-box>
+        <a-entity 
+            camera position="0 1.6 0"
+        ></a-entity>
+    </a-entity>
+
+    <a-sky material="src:evening.jpeg"></a-sky>
+    
+  
+  </a-scene>
+  </body>
+  </html>

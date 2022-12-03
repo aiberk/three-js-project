@@ -13,6 +13,8 @@
     you can do event-set__enter="_event: mouseenter; material.color: blue"
     -->
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+    <script src="follow.js"></script>
   </head>
   <body>
     <a-scene>
@@ -48,7 +50,14 @@
         ></a-animation>
       </a-box>
 
+      <a-link
+        href="index.html"
+        title="My Homepage"
+        image="assets/instructions.png"
+      ></a-link>
+
       <a-sphere
+        follow="url:gameover.html;"
         position="0 1.25 -5"
         radius="1.25"
         color="#EF2D5E"
