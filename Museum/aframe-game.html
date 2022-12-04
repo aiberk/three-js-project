@@ -13,6 +13,10 @@
     <script src="js/video-control.js"></script>
     <!-- Custom component for Text -->
     <script src="js/message.js"></script>
+    <!-- Custom component for Text -->
+    <script src="js/image.js"></script>
+    <!-- Custom component for Text -->
+    <script src="js/custom-link.js"></script>
 
     <script>
       //  TODO
@@ -30,29 +34,6 @@
       const chosen_box = Math.floor(Math.random() * 3);
       let click_count = 0;
       let user_success = false;
-
-      AFRAME.registerComponent("image", {
-        schema: {},
-        init: function () {
-          this.play();
-          var data = this.data;
-          var el = this.el;
-          var mesh = el.getObject3D("mesh");
-
-          el.addEventListener("click", function () {
-            mesh.scale.x = 0;
-            mesh.scale.y = 0;
-            mesh.scale.z = 0;
-          });
-        },
-        update: function (oldData) {
-          this.el = this.data;
-        },
-        tick: function () {},
-        remove: function () {},
-        pause: function () {},
-        play: function () {},
-      });
     </script>
   </head>
   <body>
@@ -97,7 +78,21 @@
 
       <!-- <a-video src="#movie" width="16" height="9" position="0 0 -20"></a-video> -->
 
-      <a-link href="mouse.html" title="My Homepage"> </a-link>
+      <a-image
+        image
+        src="#instructions"
+        position="0 0 -2.775"
+        scale="5 4 4"
+      ></a-image>
+
+      <a-image
+        custom-link
+        id="55"
+        src="assets/wood.jpg"
+        position="0 0 2.775"
+        scale="5 4 4"
+        whereto="mouse.html"
+      ></a-image>
 
       <a-entity
         game-chest
@@ -133,7 +128,6 @@
         material="color: rgb(123, 63, 0)"
         position="0 -2 -4.03026"
         scale="30.98 1 50"
-        shadow="receive: true"
       ></a-entity>
     </a-scene>
   </body>
