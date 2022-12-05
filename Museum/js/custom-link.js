@@ -4,12 +4,13 @@ AFRAME.registerComponent("custom-link", {
     var el = this.el;
 
     el.addEventListener("click", function () {
+      // window.location.replace("PAGE_YOU_WANT.html");
+      // or use the randomized code
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
-      var chosen_number = getRandomInt(2);
-      console.log(chosen_number);
-      if (window.location.pathname == "/Museum/aframe-game.html") {
+      let chosen_number = getRandomInt(2);
+      if (window.location.pathname == "/Museum/aby.html") {
         if (chosen_number == 0) {
           window.location.replace("rue.html");
         } else {
@@ -19,7 +20,7 @@ AFRAME.registerComponent("custom-link", {
         if (chosen_number == 0) {
           window.location.replace("aby.html");
         } else {
-          window.location.replace("eugene.html");
+          window.location.replace("rue.html");
         }
       } else if (window.location.pathname == "/Museum/rue.html") {
         if (chosen_number == 0) {
